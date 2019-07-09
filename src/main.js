@@ -1,1 +1,3 @@
-console.log('prueba');
+import './styles/index.scss';
+
+console.log('test ok');
