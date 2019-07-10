@@ -12,26 +12,32 @@ module.exports = {
         filename: 'bundle.js',
         path: path.join(__dirname, 'dist'),
     },
-    module:{
-        rules:[{
-            test:/\.scss$/,
-            use:[
-                'style-loader',
-                {
-                    loader:'css-loader',
+    module: {
+        rules:[
+            {
+            test: /\.scss$/,
+            use: [
+                'style-loader', 
+                { 
+                    loader: 'css-loader',
                     options: {
                         sourceMap: true,
                     },
-                },
+                }, 
                 {
                     loader: 'sass-loader',
                     options: {
                         sourceMap: true,
                     },
-                },
+                },            
             ],
-        },
-    ],
+            },
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/,
+            },
+        ],
     },
     plugins: [
         new htmlPlugin({
@@ -50,4 +56,5 @@ module.exports = {
         ],
         watchContentBase: true,
     },
-}; 
+
+};
